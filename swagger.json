@@ -1,0 +1,116 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Carambar & Co Joke API",
+    "version": "1.0.0",
+    "description": "API for managing jokes - Carambar & Co"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local server"
+    }
+  ],
+  "paths": {
+    "/jokes": {
+      "get": {
+        "summary": "Get all jokes",
+        "responses": {
+          "200": {
+            "description": "List of jokes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Joke" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a new joke",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/JokeInput" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Joke created",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Joke" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jokes/{id}": {
+      "get": {
+        "summary": "Get a joke by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A joke",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Joke" }
+              }
+            }
+          },
+          "404": {
+            "description": "Joke not found"
+          }
+        }
+      }
+    },
+    "/jokes/random": {
+      "get": {
+        "summary": "Get a random joke",
+        "responses": {
+          "200": {
+            "description": "A random joke",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Joke" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Joke": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "content": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "JokeInput": {
+        "type": "object",
+        "properties": {
+          "content": { "type": "string" }
+        },
+        "required": ["content"]
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import express from "express";
-import jokeRoutes from "./routes/jokeRoutes.js";
+import { jokeRoutes } from "./routes/jokeRoutes.js";
 import { sequelize } from "./models/index.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./swagger.json" assert { type: "json" };
