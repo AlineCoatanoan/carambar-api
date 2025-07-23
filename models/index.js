@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import { Joke } from "./joke.js";
+import { Joke } from "./Joke.js";
 
 // initialise la connexion avec SQLite
 const sequelize = new Sequelize({
