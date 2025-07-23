@@ -3,10 +3,15 @@ import { jokeRoutes } from "./routes/jokeRoutes.js";
 import { sequelize } from "./models/index.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./swagger.json" assert { type: "json" };
+import cors from 'cors';
 
 const app = express();
 
 app.use(express.json());
+
+app.use(cors({
+  origin: ['http://127.0.0.1:5500', 'http://localhost:5500', 'https://alinecoatanoan.github.io/carambar-front/']
+}));
 
 app.use("/api/v1", jokeRoutes);
 
