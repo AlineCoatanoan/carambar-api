@@ -2,8 +2,9 @@ import express from "express";
 import { jokeRoutes } from "./routes/jokeRoutes.js";
 import { sequelize } from "./models/index.js";
 import swaggerUi from "swagger-ui-express";
-import swaggerDocument from "./swagger.json" assert { type: "json" };
 import cors from 'cors';
+import fs from "fs";
+import path from "path";
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cors({
   origin: ['https://alinecoatanoan.github.io', 'http://alinecoatanoan.github.io']
 }));
 
+const swaggerDocument = JSON.parse(fs.readFileSync(path.resolve("./swagger.json"), "utf8"));
 
 app.use("/api/v1", jokeRoutes);
 
