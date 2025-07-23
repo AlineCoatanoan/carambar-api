@@ -10,8 +10,9 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-  origin: ['http://127.0.0.1:5500', 'http://localhost:5500', 'https://alinecoatanoan.github.io']
+  origin: ['https://alinecoatanoan.github.io', 'http://alinecoatanoan.github.io']
 }));
+
 
 app.use("/api/v1", jokeRoutes);
 
