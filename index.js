@@ -22,7 +22,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 const PORT = process.env.PORT || 3000;
 
 sequelize
-  .sync() // PAS force:true ici pour garder les données intactes
+  .sync({ force: true })
   .then(() => {
     console.log("✅ Base de données synchronisée");
     app.listen(PORT, () => {
