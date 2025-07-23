@@ -1,13 +1,9 @@
 import { Sequelize } from "sequelize";
-import { Joke } from "./Joke.js";
+import { Joke as JokeModel } from "./joke.js";
 
-// initialise la connexion avec SQLite
-const sequelize = new Sequelize({
+export const sequelize = new Sequelize({
   dialect: "sqlite",
-  storage: "database.sqlite", 
-  logging: false,
+  storage: "./database.sqlite",
 });
 
-Joke.initModel(sequelize);
-
-export { sequelize, Joke };
+export const Joke = JokeModel.initModel(sequelize);
