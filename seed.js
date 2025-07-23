@@ -16,7 +16,7 @@ const jokesData = [
 
 async function seed() {
   try {
-    await sequelize.sync({ force: true }); 
+    await sequelize.sync({ force: true }); // on reset la BDD pour injecter les blagues
     console.log("✅ Base de données synchronisée");
 
     for (const joke of jokesData) {
@@ -24,7 +24,7 @@ async function seed() {
     }
 
     console.log("🎉 Blagues insérées avec succès !");
-    process.exit(0);
+    process.exit(0); // on ferme le process car c’est un script ponctuel
   } catch (error) {
     console.error("❌ Erreur lors du seed :", error);
     process.exit(1);
