@@ -1,5 +1,5 @@
 import { sequelize } from "./models/index.js";
-import { Joke } from "./models/joke.js";
+import { Joke } from "./models/Joke.js";
 
 const jokesData = [
   { content: "Quelle est la femelle du hamster ? L’Amsterdam" },
