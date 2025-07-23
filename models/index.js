@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import { Joke as JokeModel } from "./joke.js";
+import { Joke as JokeModel } from "./Joke.js";
 
 export const sequelize = new Sequelize({
   dialect: "sqlite",
