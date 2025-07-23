@@ -1,5 +1,4 @@
-import { sequelize } from "./models/index.js";
-import { Joke } from "./models/Joke.js";
+import { Joke } from './models/Joke.js';
 
 const jokesData = [
   { content: "Quelle est la femelle du hamster ? L’Amsterdam" },
@@ -14,21 +13,21 @@ const jokesData = [
   { content: "Quel est le comble pour un joueur de bowling ? C’est de perdre la boule" }
 ];
 
-async function seed() {
-  try {
-    await sequelize.sync({ force: true }); // on reset la BDD pour injecter les blagues
+sequelize
+  .sync({ force: true })
+  .then(async () => {
     console.log("✅ Base de données synchronisée");
 
+    // Insérer les blagues après la synchro
     for (const joke of jokesData) {
       await Joke.create(joke);
     }
-
     console.log("🎉 Blagues insérées avec succès !");
-    process.exit(0); // on ferme le process car c’est un script ponctuel
-  } catch (error) {
-    console.error("❌ Erreur lors du seed :", error);
-    process.exit(1);
-  }
-}
 
-seed();
+    app.listen(PORT, () => {
+      console.log(`🚀 Serveur lancé sur http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error("❌ Erreur lors de la synchronisation de la BDD :", err);
+  });
