@@ -13,12 +13,11 @@ const jokesData = [
   { content: "Quel est le comble pour un joueur de bowling ? C’est de perdre la boule" }
 ];
 
-sequelize
-  .sync({ force: true })
-  .then(async () => {
+export async function seedDatabase(sequelize, app, PORT) {
+  try {
+    await sequelize.sync({ force: true });
     console.log("✅ Base de données synchronisée");
 
-    // Insérer les blagues après la synchro
     for (const joke of jokesData) {
       await Joke.create(joke);
     }
@@ -27,7 +26,7 @@ sequelize
     app.listen(PORT, () => {
       console.log(`🚀 Serveur lancé sur http://localhost:${PORT}`);
     });
-  })
-  .catch((err) => {
+  } catch (err) {
     console.error("❌ Erreur lors de la synchronisation de la BDD :", err);
-  });
+  }
+}
