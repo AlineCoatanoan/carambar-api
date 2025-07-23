@@ -11,9 +11,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors({
-  origin: ['https://alinecoatanoan.github.io/carambar-front']
-}));
+app.use(cors());
 
 const swaggerDocument = JSON.parse(fs.readFileSync(path.resolve("./swagger.json"), "utf8"));
 
