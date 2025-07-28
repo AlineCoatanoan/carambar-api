@@ -5,7 +5,7 @@ import swaggerUi from "swagger-ui-express";
 import cors from 'cors';
 import fs from "fs";
 import path from "path";
-import { seedDatabase } from './seed.js';  // <-- Import
+import { seedDatabase } from './seed.js'; 
 
 const app = express();
 
