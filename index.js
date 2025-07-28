@@ -20,4 +20,4 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const PORT = process.env.PORT || 3000;
 
-seedDatabase(sequelize, app, PORT);  // <-- Lancement synchronisation + seed + serveur
+seedDatabase(sequelize, app, PORT);  
